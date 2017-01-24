@@ -1,0 +1,24 @@
+<div class = "row">
+	<div class = "col-sm-5 col-sm-offset-1">
+		<h4>Enter Bill Totals:</h4>
+		<form>
+			<div class="form-group">
+				<label> 
+					Total Bill:	<input type="number" ng-model = "$ctrl.grandTotal" class = "form-control" />
+				</label>
+				<br>
+				<label>
+					Total Tax: <input type="number" ng-model = "$ctrl.taxTotal" class = "form-control" />
+				</label>
+			</div>
+
+				<input type="submit" class="btn btn-primary" ng-click="$ctrl.submit()" value="Submit">
+
+		</form>
+		<h4>{{$ctrl.billObj.grandTotal}}</h4>
+	</div>
+	<div class = "col-sm-5">
+
+
+	</div>
+</div>
