@@ -1,0 +1,19 @@
+<div class = "row">
+	<div class="col-sm-12">
+		<h4>Enter Group Name</h4>
+			<form>
+			<div class="form-group">
+				<label>
+					Group Name: <input type="text" ng-model="$ctrl.groupName" class = "form-control" />
+				</label>
+				<br>
+			</div>
+				<input type="submit" class="btn btn-primary" ng-click = "$ctrl.submit()" value = "Submit" />
+			</form>
+	<!-- 			<input type = "submit" class = "btn" ng-click = "$ctrl.logProps()" value = "logProps" /> -->
+	</div>
+</div>
+
+<div class = "row">
+	<list-groups group = "group" ng-repeat = "group in $ctrl.groupList track by $index" delete-group = "$ctrl.deleteGroup(group)""></list-groups>
+</div>
