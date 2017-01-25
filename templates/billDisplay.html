@@ -1,0 +1,7 @@
+<h3>Bill Summary:</h3>
+	<label>Bill Subtotal:</label>
+	<h4>{{$ctrl.billObj.total() | currency: symbol}}</h4>
+	<label>Total Tax:</label>
+	<h4>{{$ctrl.billObj.tax | currency: symbol}} @ {{$ctrl.billObj.taxPercent()}}%</h4>
+	<label>Bill Total:</label>
+	<h4>{{$ctrl.billObj.grandTotal| currency: symbol}}</h4>

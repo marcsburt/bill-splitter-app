@@ -1,27 +1,7 @@
-var myApp = angular.module('billSplitter', ['ui.router']);
+var myApp = angular.module('billSplitter',[]);
 
 
-//config
-
-myApp.config(function($stateProvider, $urlRouterProvider) {
-
-	$urlRouterProvider.otherwise('/billTotal');
-
-	var billState = {
-
-		name: 'billTotal',
-		url: '/billTotal',
-		component: 'billTotal',
-
-	}
-
-
-	$stateProvider.state(billState);
-
-});
-
-
-var billTotal = function($scope, $rootScope){
+var billTotal = function(){
 
 	//boilerplate so method doesn't skip to global object
 	var self = this;
@@ -32,31 +12,37 @@ var billTotal = function($scope, $rootScope){
 		tax: 'DEFAULT',
 		taxPercent: function(){
 			return Math.round(this.tax/this.grandTotal*100).toFixed(1);
+		},
+		total: function(){
+			return this.grandTotal-this.tax;
 		}
 	}
 	
 	//variables exposed to scope function
 	self.grandTotal;
 	self.taxTotal;
-	self.billObj = {}
+	// self.billObject = {}
 
 	//bound to ng-click
 	self.submit = function(){
 		
-		//check if newBill was already created
-		if (newBill){
+		//check if tempBill was already created
+		if (tempBill){
 			//if it was reinitialize object
-			var newBill = {};
+			var tempBill = {};
 		}
 
-		//create new object from billObj and add new values
-		var newBill = Object.create(Bill);
-		newBill.grandTotal = self.grandTotal;
-		newBill.tax = self.taxTotal;
+		//create new object from billObject and add new values
+		var tempBill = Object.create(Bill);
+		tempBill.grandTotal = self.grandTotal;
+		tempBill.tax = self.taxTotal;
 
+		//declare billObject as tempBill
+		self.billObject = tempBill;
+
+		//reset input values to empty string
 		self.grandTotal = '';
 		self.taxTotal = '';
-		self.billObj = newBill;
 	}
 
 
@@ -65,13 +51,18 @@ var billTotal = function($scope, $rootScope){
 
 
 myApp.component('billTotal', {
-	bindings:{
-		//billObj: '<',
-		//grandTotal: '=',
-		//taxTotal: '=',
-		//formSubmit: '@'
-	},
+
 	templateUrl: 'templates/billTotal.html',
 	controller: billTotal
 })
 
+var billDisplay = function(){
+
+}
+
+myApp.component('billDisplay',{
+	bindings:{billObj: '<'},
+	controller: billDisplay,
+	templateUrl: 'templates/billDisplay.html'
+
+})

@@ -1,6 +1,6 @@
 <div class = "row">
-	<div class = "col-sm-5 col-sm-offset-1">
-		<h4>Enter Bill Totals:</h4>
+	<div class = "col-sm-6 col-md-12">
+		<h2>Enter Bill Totals:</h2>
 		<form>
 			<div class="form-group">
 				<label> 
@@ -15,10 +15,11 @@
 				<input type="submit" class="btn btn-primary" ng-click="$ctrl.submit()" value="Submit">
 
 		</form>
-		<h4>{{$ctrl.billObj.grandTotal}}</h4>
+
 	</div>
-	<div class = "col-sm-5">
+	<div class = "col-sm-6 col-md-12" ng-show = "$ctrl.billObject">
 
-
+		<bill-display bill-obj = "$ctrl.billObject"></bill-display>
+	
 	</div>
 </div>
