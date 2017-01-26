@@ -181,3 +181,18 @@ myApp.component('inputBillItems',{
 
 })
 
+
+var displayItems = function(){
+
+
+
+}
+
+myApp.component('displayItems', {
+	bindings:{
+		items: '<'
+	},
+	controller: displayItems,
+	templateUrl: 'templates/displayItems.html'
+})
+
