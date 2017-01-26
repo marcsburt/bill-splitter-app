@@ -1,9 +1,4 @@
 
-<div ng-repeat = "item in $ctrl.groupItemList">
-{{item}}
-
-
-</div>
 <form class = "form-inline">
 	<div class="form-group">
 		<label>Item Name:</label>
@@ -21,4 +16,5 @@
 		<input type ="submit" class = "btn btn-primary" ng-click = "$ctrl.submit()" value = "Add" />
 	</div>
 </form>
+<test item = "item" ng-repeat="item in $ctrl.groupItemList track by $index"></test>
 

@@ -1,12 +1,14 @@
-<div class = "col-md-12">
+<h1>Local: {{$ctrl.groupList}}</h1>
+<h1>Parent: {{$ctrl.makeGroups.groupList}}</h1>
 
-	<h3>{{$ctrl.group.name}}</h3>
+	<div ng-repeat = "group in $ctrl.groupList track by $index">
+		<div class = "col-md-12">
 
-	<input-bill-items></input-bill-items>
+			<h3>Group: {{group.name}}</h3>
 
-	<button ng-click = "$ctrl.delete()" type="button" class = "btn btn-danger"><span class = "glyphicon glyphicon-trash"></span></button>
-
-</div>	
+			<button ng-click = "$ctrl.delGroup($ctrl.groupList, $index)" type="button" class = "btn btn-danger"><span class = "glyphicon glyphicon-trash"></span></button>
+		</div>
+	</div>
 <br>
 
 
